@@ -5,7 +5,12 @@ jobs:
   say-hello:
     runs-on: ubuntu-latest
     steps:
-      - name: checkout 없이 파일 보기
+      - name: checkout 전
+        run: ls -al
+
+      - uses: actions/checkout@v7      # 저장소 코드를 러너로 복사
+
+      - name: checkout 후
         run: |
-          pwd
           ls -al
+          cat readme.md
