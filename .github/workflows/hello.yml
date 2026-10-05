@@ -5,12 +5,11 @@ jobs:
   say-hello:
     runs-on: ubuntu-latest
     steps:
-      - name: checkout 전
-        run: ls -al
+      - name: 1번 단계
+        run: echo "여기는 실행됨"
 
-      - uses: actions/checkout@v7      # 저장소 코드를 러너로 복사
+      - name: 2번 단계 - 고의 실패
+        run: exit 1                # 0이 아닌 종료 코드 = 실패
 
-      - name: checkout 후
-        run: |
-          ls -al
-          cat readme.md
+      - name: 3번 단계
+        run: echo "여기는 실행되지 않음"
