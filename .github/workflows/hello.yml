@@ -1,14 +1,16 @@
-name: hello                      # Actions 탭에 표시될 이름
-on: push                         # 언제? push가 발생하면
+name: hello
+on: push
 
 jobs:
-  say-hello:                     # job의 id
-    runs-on: ubuntu-latest       # 어디서? 우분투 러너에서
-    steps:                       # 무엇을? 위에서부터 순서대로
-      - name: 인사하기
-        run: echo "Hello, GitHub Actions!"
-      - name: 실행 환경 확인
+  say-hello:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout 전
+        run: ls -al
+
+      - uses: actions/checkout@v7      # 저장소 코드를 러너로 복사
+
+      - name: checkout 후
         run: |
-          date
-          python3 --version
-          echo "현재 폴더: $(pwd)"
+          ls -al
+          cat README.md
